@@ -224,22 +224,6 @@ kaggle.api.dataset_download_files(
 8. **Importancia de Características:** Ranking de predictores
 
 
-## 🔍 Interpretación de Resultados
-
-### Modelo de Regresión (R² = 0.3385)
-- Captura el 34% de la variabilidad en ventas
-- Comparable a benchmarks industriales (películas: 15-30%)
-- Error promedio: ~1 millón de unidades
-
-### Modelo de Clasificación (Accuracy = 88%)
-- Identifica correctamente 9 de cada 10 juegos exitosos
-- Precision/Recall balanceados (~88%)
-- Útil para decisiones de inversión
-
-### Validación del Modelo
-- Validación cruzada confirma estabilidad (CV R² = 0.25)
-- Overfitting controlado (diferencia train-test < 60%)
-- Sin data leakage (variables post-lanzamiento excluidas)
 
 ## 💡 Recomendaciones Estratégicas
 
