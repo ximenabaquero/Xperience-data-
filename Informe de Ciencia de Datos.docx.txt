@@ -1,0 +1,268 @@
+﻿Data Xperience
+Video-Game-Sales-Dataset
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ AUTORES        
+
+
+Edwin Gonzalez
+Ximena Baquero
+Kevin Carvajal
+Juliana Galindo 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TUTOR: 
+Camila Silva Gómez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Universidad EAN 
+Data Xperience
+Bogotá, Septiembre 2025
+
+
+
+
+
+
+
+
+
+
+
+
+Introducción y obtención de datos: 
+    En las últimas cinco décadas, los videojuegos se han consolidado como una de las fuentes de entretenimiento más populares para la humanidad. Han generado transformaciones culturales y sociales, alcanzando una dimensión global. A lo largo del tiempo, han evolucionado desde consolas complejas hasta juegos inmersivos en dispositivos móviles, aumentando tanto en complejidad como en las diferentes posibilidades de trabajo cooperativo.
+    Para este proyecto, se ha utilizado la base de datos “Video-Game-Sales” con el fin de identificar los videojuegos más populares de los últimos años y analizar qué factores determinan su éxito comercial. Esta base de datos fue obtenida de Kaggle, una plataforma pública que ofrece repositorios de datos y código para impulsar proyectos de ciencia de datos. (DataScientest).
+    La base de datos contiene 16 variables, tanto categóricas como numéricas, que ofrecen información detallada sobre los videojuegos. Estas variables incluyen el nombre del videojuego, la plataforma (como Wii, PlayStation, Xbox o Nintendo), el año de lanzamiento, el género y la editorial. También se registran las ventas en diferentes regiones: Norteamérica, la Unión Europea, Japón y el resto del mundo, lo que permite obtener el total de ventas globales y regionales.
+    Adicionalmente, el conjunto de datos incluye la puntuación de críticos y usuarios, el número de personas que emitieron estas puntuaciones, el desarrollador y una calificación general. Con un total de 16,719 registros, esta base de datos proporciona una cantidad de información ideal para llevar a cabo análisis estadísticos descriptivos robustos y detallados para el proyecto.
+    Para llevar a cabo el análisis de datos y la exploración, se utilizó la plataforma Visual Studio debido a la posibilidad de acceder a distintas funcionalidades que otros programas no tienen. Esta plataforma facilita la limpieza y depuración de datos, a la vez que proporciona soporte para diversas tecnologías y brinda capacidades avanzadas para análisis estadísticos y la generación de gráficos. Estos elementos resultan esenciales para una investigación de gran alcance, aquello que se convierte en uno de los focos principales del presente proyecto. 
+    Objetivo principal: Realizar un análisis estadístico y descriptivo del mercado global de videojuegos con el fin de cuantificar y comprender los factores clave que impulsan el éxito comercial de los ejemplares. 
+    Preguntas de investigación: 
+    Pregunta principal: ¿Qué factores influyen en la popularidad de un videojuego entre los jugadores, críticos y cómo se relacionan con su éxito comercial?”
+    Preguntas de apoyo: 
+* ¿Qué consola concentra la mayor cantidad de videojuegos con éxito comercial?
+* ¿De qué manera influye el modelo de negocio o formato de distribución (físico en disco, digital, móvil o en computador) en la popularidad de los videojuegos?
+* ¿Qué variables influyeron en el aumento acelerado de las ventas de videojuegos entre 2000 y 2007 y qué provocó su posterior descenso??
+* ¿Qué géneros han demostrado históricamente una mayor rentabilidad a nivel comercial? (acción, terror, deportes, estrategia, etc)
+* ¿Existe una relación entre la época de lanzamiento y el éxito comercial de un videojuego?
+     Como justificación, se identifica que el dataset video-game-sales es adecuado para la presente investigación porque recopila información importante acerca de las ventas globales y regionales, género, plataforma, editorial, año de lanzamiento en conjunto de críticos y usuarios. Dichas variables permiten identificar la aceptación de los jugadores y críticos en los videojuegos lanzados año a año, además de identificar cuáles son los factores que determinan que tenga mayor cantidad de ventas a nivel global y regional (en ese caso Norteamérica). Con ello, los más de 16.000 datos permiten obtener una perspectiva más amplia acerca de ello, por tanto, el primer paso sería realizar la limpieza de datos y posteriormente los correspondientes análisis.  
+     Data understanding 
+     La agrupación de los datos se subdivide en 11 variables. La primera variable se relaciona con el nombre del videojuego, en donde se identifican videojuegos bastante populares como Wii Sport, Super Mario Bros, Mario Kart, Pokemon, Tetris, Grand Theft Auto, Gran Turismo, Call of Duty, Halo, Donkey Kong, Minecraft, FIFA, Pacman, Zelda, Red Dead Redemption, God of war, Guitar Hero, Sonic entre otros. En otra variable, se identifican las consolas más usadas como Wii, las generaciones de Playstation, Xbox, las generaciones de Nintendo, Atari, Computadora Personal, entre otros. La agrupación de los  datos incluye juegos lanzados entre 1980 y 2020, además de las diferentes temáticas que abordan los videojuegos, como deportes, carreras, juegos de roles, simulador, carreras, rompecabezas, shooters, acción, aventura y estrategia, entre otros. Adicionalmente se analizan la cantidad de millones en ventas realizadas en Norteamérica, Europa, Japón y alrededor del mundo.  
+Se considera que pueden ser útiles todas las variables para los diferentes análisis que se pretenden realizar en el proyecto.
+    Limpieza de datos: 
+    En primera instancia, se importan las bibliotecas de pandas,  numpy, matplotlib y seaborn, las cuales tienen como objetivo el cargue de información para estructurar y limpiar la información de las filas y columnas de manera más fácil, además facilita la filtración, agrupación y transformación de datos. A su vez, permiten la realización de operaciones matemáticas estadísticas más complejas entre grandes cantidades de datos, con el fin de mejorar la calidad y realización de los diferentes gráficos. 
+    Se utiliza el comando display(df.head()), con el fin de enlistar las 5 primeras filas y mostrarlas, además del comando print(df.info()) para mostrar la información más relevante del data set, lo cual nos arroja que en la exploración inicial se confirma que la base de datos consta de 16.598 datos con 11 variables, en un periodo de tiempo de 1980 a 2020. 
+    La preparación y limpieza de datos en el código se realizó mediante un enfoque sistemático que abordó tanto la imputación de valores faltantes como la detección de valores atípicos y la generación de variables derivadas para análisis posteriores. En primer lugar, se imputaron los valores nulos de la variable Year utilizando la mediana, una medida robusta frente a la presencia de outliers, mientras que los valores faltantes en Publisher  fueron reemplazados por la categoría 'Unknown', preservando la integridad del conjunto sin eliminar observaciones. Posteriormente, se convirtió Year a tipo entero para garantizar consistencia en operaciones temporales. Se aplicó el método del rango intercuartílico (IQR) para identificar outliers en Global_Sales, estableciendo límites superiores e inferiores que permitieron cuantificar la proporción de títulos con ventas extraordinarias. Por último, se generaron variables derivadas como Decade, Success_Category y Is_Successful, que segmentan temporalmente los datos, categorizan el nivel de éxito comercial y permiten construir modelos supervisados y facilitan, por tanto, los pasos subsiguientes. 
+
+
+Análisis exploratorio básico
+Se evidencia por otro lado, un resumen estadístico de las ventas a nivel global, mostrando un el promedio, la desviación estándar, rangos intercuartílicos de primer, segundo y tercer orden, además de los valores máximos de  cada sección. En ese sentido se puede evidenciar que ventas promedio, de todas las regiones, Norteamérica muestra el promedio de ventas más alto (0.264 millones de unidades), seguidas de Europa (0.1466), en Japón y otras regiones, el promedio de ventas son significativamente menores. 
+   Cuando se observan los valores máximos, se evidencia que los juegos alcanzan su mayor éxito de ventas en la región de Norteamérica (41.49M) seguido de Europa (29.02M). Las ventas máximas en Japón y otras regiones no son tan notables como en las dos anteriores regiones mencionadas anteriormente; esto podría tener diferentes explicaciones, por ejemplo, el tamaño de la población, teniendo en cuenta que Norteamérica y Europa tienen poblaciones más robustas que el mercado japonés, además que las consolas como Play Station y Xbox han dominado estos mercados, debido a que se venden en grandes volúmenes, además de la preferencia por videojuegos más de acción y aventuras, a diferencia de juegos preferidos por Japón; esto también podría indicar que existen diferentes estrategias de marketing y distribución que favorecen el mercado capitalista norteamericano y europeo. 
+La limpieza comenzó con la imputación de valores nulos: los registros sin año de lanzamiento se completaron con la mediana de la variable Year mediante df_clean['Year'].fillna(median_year, inplace=True), mientras que los valores faltantes en Publisher se reemplazaron por la categoría Unknown. Luego se convirtió Year a tipo entero para facilitar su agrupación por décadas. Se identificaron outliers en Global_Sales utilizando el método del rango intercuartílico, calculando Q1 y Q3 con quantile(0.25) y quantile(0.75), y estableciendo límites para detectar títulos con ventas extraordinarias. Además, se generaron variables derivadas como Decade, Success_Category e Is_Successful, que permiten segmentar temporalmente los datos, clasificar el nivel de éxito comercial y construir modelos supervisados.
+Se calculó la mediana de Global_Sales con median(), representada visualmente en un histograma mediante axvline. El análisis temporal se realizó agrupando por Year y Decade con groupby(), obteniendo conteos de juegos con size(), ventas totales con sum() y ventas promedio con mean(), lo que permite observar tendencias agregadas y evolución histórica del mercado. Las visualizaciones incluyeron histogramas con hist(), gráficos de barras con bar(), gráficos de líneas con plot(), gráficos circulares con pie() y barras apiladas por género y década con plot(kind='bar', stacked=True), todos configurados con etiquetas, anotaciones y leyendas para facilitar la interpretación.
+La matriz de correlación se construyó entre variables numéricas como Year, NA_Sales, EU_Sales, JP_Sales, Other_Sales y Global_Sales utilizando corr(), y se visualizó mediante imshow() en un heatmap codificado por color con cmap='coolwarm', anotado con coeficientes de correlación mediante text(), ajustando el color del texto según la magnitud del coeficiente. Este análisis reveló correlaciones fuertes entre ventas regionales y globales, y una baja correlación entre el año de lanzamiento y el volumen de ventas, lo que sugiere que el éxito comercial depende más de factores como plataforma, género y región que del momento histórico en sí. En conjunto, el código implementa un análisis exploratorio robusto que combina limpieza de datos, estadística descriptiva, visualización multivariada y análisis de correlación, orientado a extraer patrones significativos y preparar el terreno para modelos predictivos más precisos.
+En cuánto a la desviación estándar de los procesos, fue realizada con las variables de cantidad de juegos en plataforma, la cual obtuvo una media de 1.252 y una desviación estándar de 641, lo que sugiere una amplia dispersión en la cantidad de juegos por plataforma, esto podría indicarse porque hay varias plataformas que tienen mayor cantidad de videojuegos en comparación con otras, por ejemplo, el Play Station vs Atari, es de conocimiento general que la cantidad de videojuegos que pueden existir en las Play Station es mucho más robutsta que los existententes en consolas como el Atari. 
+Por otro lado, en cuanto a la media de la variable de antiguedad de antiguedad del videojuego, se identifica que la media es 17 y la desviación estándar es de 5,78, lo cual indica que es una desviación moderada en relación con los datos de media, esto puede indicar que la edad de los juegos pueden estar clasificados entre muy antiguos o muy nuevos, esto puede tener sentido si consideramos que se observan ejemplares como Donkey Kong, el cual fue lanzado en la década de los 80, vs Minecraft, el cual fue lanzado a mediados de 2010. 
+Gráficos: 
+Con el fin de interpretar las diferentes variables identificadas en la base de datos, se realizaron 10 gráficos para proporcionar los diferentes resultados que se observaron. 
+1. Gráfico distribución de ventas globales vs frecuencia 
+El código de Python se utilizó para crear un histograma, un tipo de gráfico que facilita la explicación de la distribución de las ventas globales de videojuegos. Se empleó la función hist() de la biblioteca Matplotlib para visualizar cómo se agrupan las ventas. Además, se añadió una línea vertical para marcar la mediana, un valor estadístico que ayuda a entender el punto medio de las ventas sin que sea afectado por los valores extremos. El objetivo del presente gráfico es mostrar la distribución de frecuencias, en otras palabras, identificar con qué frecuencia se agrupan los videojuegos en los distintos rangos de ventas evidenciados. 
+Se observa en el gráfico una marcada distribución hacia el lado izquierdo, lo cual manifiesta que la mayoría de todos los videojuegos presentes en la base de datos, presenta ventas muy modestas, en su gran mayoría por debajo del millón de unidades, la mediana a su vez expresa que se sitúan incluso por debajo de los valores de 0.17 millones de dólares; esto podría explicar que la mitad de los videojuegos estudiados vendió menos de 170.000 unidades, mientras que la otra mitad superó esta cifra. 
+Frente a lo mencionado anteriormente, se puede inferir que responde a una situación que ha cambiado en los últimos años y es que hay nuevas manera de tener acceso a los videojuegos, más allá de comprarlos física o digitalmente. En la actualidad, existen diferentes formas de acceder a un videojuego, por ejemplo, hay muchos juegos que son gratuitos en el celular y en computador, como Minecraft que es de los juegos más populares actualmente; por otro lado, la proliferación de páginas piratas y los combos virtuales que ofrecen tener mayor cantidad de videojuegos a precios muy bajos, lo cual indica que la compra unitaria de los videojuegos se vuelve cada vez menos común. 
+2. Gráfico ventas totales (millones) vs plataforma
+Se realiza un gráfico de barras el cual permite visualizar de mayor a menor las ventas generadas por cada plataforma. Primero, se utilizó el método .groupby() para agrupar los datos por la columna de plataforma ('Platform'). Luego, se aplicó .sum() para sumar las ventas globales de cada grupo. El resultado se ordenó de forma descendente con .sort_values(ascending=False) y se seleccionaron las 10 primeras plataformas con .head(10). Una vez procesados los datos, el código utilizó la biblioteca Matplotlib para crear el gráfico. La función .bar() se encargó de dibujar las barras, y el resto de las líneas de código se usaron para personalizar la visualización. 
+El gráfico muestra las 10 consolas que más videojuegos han vendido en los 40 años analizados en la base de datos, se identifica que la PlayStation 2 (PS2) lidera la lista con más de 1.200 millones de  ventas, seguida de cerca por la Xbox 360 y la PlayStation 3 (PS3) con más de 900 millones, lo que demuestra el éxito masivo de la sexta y séptima generación de consolas. Además, la presencia de la Wii y la Nintendo DS en los primeros lugares subraya cómo la innovación y un enfoque en un público más amplio (niños y adolescentes) pueden generar mayores ventas que otro tipo de alternativas. 
+A su vez, se identifica que existe una marcada diferencia entre las ventas de las primeras plataformas y las últimas, indicando que la mayoría del mercado ha sido históricamente dominado por unas plataformas reconocidas como el Play y la Xbox, teniendo en cuenta que aparece el “PC” en último lugar del TOP, el cual, como se ha mencionado anteriormente, contiene también gran cantidad de videojuegos gratuitos. 
+3. Gráfico género vs ventas totales 
+Se realiza un gráfico de barras el cual muestra la cantidad de ventas totales por género de videojuegos, como en el gráfico anterior se utilizó el método .groupby() para agrupar los datos por género ('Genre') y el método .sum() para sumar todas las ventas globales ('Global_Sales') de cada categoría. El resultado se ordenó de forma descendente. 
+El gráfico evidencia en un Top 10,  cuáles son los géneros de videojuegos que más cantidad de ventas han generado en el periodo de tiempo de 1980 a 2020. Se evidencia que el género de Acción encabeza la lista con más de 1,750 millones de unidades vendidas, lo que lo posiciona como el género más popular y comercialmente exitoso en los últimos años. Le siguen de cerca los géneros de Deportes y Shooter, lo que puede inferir que  los juegos con experiencias competitivas entre jugadores, son más llamativos para los usuarios. 
+La diferencia en las ventas entre los géneros más populares y los menos populares es notable. Por ejemplo, la brecha entre el género de Acción y la Estrategia (último lugar) es demasiado notable, lo que sugiere que, aunque hay un mercado para los juegos de estrategia, no es tan masivo como el de los géneros de acción y deportes. Estos datos concuerdan con la popularidad de ciertos videojuegos, como Grand Theft Auto, Call of Duty o FIFA, ya que estos pertenecen precisamente a estos géneros.
+4. Gráfico Evolución de ventas por año vs ventas totales
+Se escoge el gráfico de líneas para mostrar la evolución temporal de las ventas de videojuegos desde 1980 hasta 2020, al igual que en los gráficos anteriores, se utiliza el método .groupby() para agrupar los datos, en este caso por el 'Year' de lanzamiento. Luego, se suman las ventas globales para cada año usando .sum(). La función plt.plot() se encarga de dibujar la línea, uniendo los puntos de ventas de cada año. El resultado es un gráfico que muestra el crecimiento y posterior declive del mercado de videojuegos a lo largo de las décadas. 
+El gráfico muestra una evolución en forma de curva ascendente y descendente. Las ventas se mantuvieron relativamente bajas en las décadas de los 80 y 90, pero experimentaron un crecimiento exponencial a partir del año 2000. El punto más alto de la curva, el pico de ventas, se alcanza alrededor del año 2007. Posteriormente, las ventas entran en un declive constante hasta el año 2017 y se mantienen hasta el 2020.
+Este comportamiento del mercado puede explicarse por diversos factores, el pico en 2007 puede deberse a la popularidad de la séptima generación de consolas, lanzadas entre 2005 y 2006. En esta generación, la Xbox 360 (noviembre de 2005), la PlayStation 3 (noviembre de 2006) y, especialmente, la Nintendo Wii (noviembre de 2006) generaron un boom masivo de ventas. La Wii, en particular, atrajo a un público casual y familiar que no solía comprar consolas, lo que amplió enormemente el mercado. 
+El posterior declive es porque los siguientes años hubo un auge de los juegos móviles y free-to-play: A finales de la década de 2000, los smartphones se hicieron populares y con ellos surgieron tiendas de aplicaciones como la App Store de Apple (2008). Esto impulsó el modelo de negocio de juegos gratuitos y de bajo costo para móviles, que compitió directamente con la venta de juegos físicos de consola. Adicionalmente, debido a la facilidad de acceso a internet, la piratería se intensificó con la facilidad de acceso a internet. La posibilidad de obtener juegos sin costo por medio de descargas ilegales también afectó las ventas. 
+
+
+
+
+5. Gráfico distribución de ventas por región 
+Se utiliza el gráfico de pastel o gráfico circular. Este tipo de visualización es ideal para mostrar la composición de un todo, en este caso, la distribución de las ventas globales de videojuegos por región. El código toma los datos de las ventas de Norteamérica (NA_Sales), Europa (EU_Sales), Japón (JP_Sales) y el resto del mundo (Other_Sales), y los utiliza para generar los porcentajes de cada "rebanada" del pastel. La función plt.pie() es la que se encarga de realizar la visualización, mostrando la proporción de ventas que cada región contribuye al total mundial. El gráfico revela que  Norteamérica es el mercado dominante en la industria de los videojuegos, representando casi la mitad de las ventas globales con un 49.3%. Le sigue Europa con un 27.3%, lo que la posiciona como el segundo mercado más grande. Japón, a pesar de ser un mercado clave y un centro de desarrollo de videojuegos, ocupa el tercer lugar con un 14.5%. Finalmente, el resto del mundo, que incluye mercados emergentes y otras regiones, constituye el 8.9% restante.
+Esta distribución de ventas nos permite concluir que el mercado de los videojuegos está fuertemente concentrado en Norteamérica y Europa. Las decisiones de las empresas desarrolladoras y editoriales, como la localización y el marketing, probablemente se centran en estos dos mercados debido a su poder de compra y su contribución masiva a los ingresos totales de la industria, además de que la población en Norteamérica y Europa es mucho más amplia que el espectro usado para Japón. 
+6. Gráfico correlación variables numéricas
+Se realizó una matriz de correlación, con el fin de entender la relación entre múltiples variables numéricas. Se seleccionaron las columnas de ventas y el año, y se usó la función .corr() de Pandas para calcular el coeficiente de correlación entre cada par de variables. Este coeficiente varía entre -1 y +1:
+* +1: Indica una correlación positiva perfecta (cuando una variable aumenta, la otra también).
+* -1: Indica una correlación negativa perfecta (cuando una variable aumenta, la otra disminuye).
+* 0: No hay relación lineal entre las variables.
+El gráfico, un mapa de calor, pone de manifiesto estos coeficientes. Los colores cálidos (rojos) representan una correlación positiva fuerte, mientras que los colores fríos (azules) indican una correlación negativa. Los valores que se acercan a cero (blanco o gris claro) muestran una correlación débil o nula. Dicho esto, se pueden deducir la siguiente información:
+-          Hay una correlación positiva muy fuerte entre las ventas de cada región (NA_Sales, EU_Sales, JP_Sales, Other_Sales) y las ventas globales (Global_Sales).
+-          Las correlaciones más fuertes se encuentran entre NA_Sales y Global_Sales (0.94), y entre EU_Sales y Global_Sales (0.89). Esto podría deberse a que estas regiones son las mayores contribuyentes a las ventas totales, como se vio en el gráfico circular anterior.
+-          El año (Year) tiene una correlación débil y negativa con las ventas globales (-0.07). Esto significa que no hay una relación lineal clara entre el año de lanzamiento y el volumen de ventas. Como vimos en el gráfico de evolución, las ventas subieron y luego bajaron, por lo que una relación simple no es suficiente para explicar el fenómeno.
+Lo anterior pondría de manifiesto que la matriz de correlación expresa que las ventas en Norteamérica y Europa son los principales impulsores de las ventas globales. Además, demuestra que el año de lanzamiento, no es un predictor fuerte de las ventas de un videojuego ya que puede tener mayor auge tiempo después.
+7. Gráfico evolución de plataformas Top por década vs ventas totales
+Se utiliza el gráfico de líneas para realizar el presente análisis, el cual muestra la evolución de las ventas de las seis plataformas más populares a lo largo de las décadas. Para lograrlo, se agruparon los datos por década y plataforma, y se sumaron las ventas globales. Luego, se seleccionaron las seis plataformas con las ventas más altas para graficar sus ventas a través del tiempo.
+El gráfico nos revela cómo ha cambiado el liderazgo en la industria de los videojuegos. La línea azul representa a la PlayStation 2 (PS2), una plataforma que dominó el mercado a finales de la década de los 90 y principios del 2000, alcanzando un pico de ventas masivo alrededor del año 2000. Este fenómeno se debe a su lanzamiento en ese año y a que se convirtió en una de las consolas más vendidas de todos los tiempos.
+En contraste, la línea verde muestra la evolución de la Xbox 360 y la línea roja la de la PS3. Ambas consolas dominaron la década de 2000, compitiendo entre sí. La Xbox 360 y la PS3 lograron picos de ventas en 2010, demostrando su gran popularidad en la séptima generación de consolas. Por su parte, la línea amarilla corresponde a la Nintendo DS, que alcanzó su punto máximo de ventas en 2005, lo que subraya la gran acogida que tuvo la consola portátil en el mercado. En conclusión, este gráfico nos permite identificar visualmente las tendencias en la industria y nos muestra que el dominio del mercado ha cambiado drásticamente con cada generación de consolas; a su vez se evidencia que desde el 2010 todas las plataformas disminuyeron su éxito en ventas, aquello que puede estar influenciado por lo mencionado anteriormente de la era digital y uso de computadores y celulares. 
+
+
+
+
+8. Gráfico distribución de géneros por década vs ventas totales
+Se usa el gráfico de barras apiladas, aquel que permite observar la distribución de una variable dentro de diferentes categorías a lo largo del tiempo. En este caso, se analizó cómo ha cambiado la contribución de cada género a las ventas totales en distintas décadas (1980, 1990, 2000 y 2010).
+El proceso en el código fue el siguiente: primero, se agruparon los datos por 'Década' y por 'Género' usando el método .groupby(). Luego, se sumaron las ventas globales ('Global_Sales') de cada combinación. Finalmente, se usó el método .unstack() para reorganizar los datos de manera que cada década fuera una fila y cada género una columna, lo que facilita la creación de un gráfico de barras apiladas.
+El gráfico evidencia la dominancia y la evolución de los géneros de videojuegos a lo largo de 40 años. Las barras representan las ventas totales de cada década, y el color de cada sección indica el género.
+* Década de 1980: El mercado era pequeño, con una distribución más equitativa de géneros como platform y shooters. También se evidencia predominancia en los juegos de Puzzle.
+* Década de 1990: Hubo un crecimiento notable en las ventas. El género de platform siguió siendo predominante, pero los juegos de Role Playing empezaron a tener un auge de mayor prevalencia, los juegos de acción empiezan a tomar importancia y los de Puzzle bajan sus ventas.
+* Década de 2000: Esta fue la década con el mayor volumen de ventas, lo que coincide con el pico visto en el gráfico de ventas anuales. Se observa un crecimiento muy amplio en casi todos los géneros, con Action dominando la mayor parte de la barra. Los géneros de Shooter y Role-Playing también experimentaron un gran auge, lo que refleja la popularidad de consolas como la PS2 y la Xbox 360, que impulsaron estos tipos de juegos.
+* Década de 2010: Se observa una caída en las ventas totales, lo que concuerda con la llegada de los juegos móviles y gratuitos, anteriormente mencionados. Aunque hubo una disminución general, el género Shooter se mantiene como una de las categorías más fuertes. Los juegos de Sports también mantienen su relevancia.
+En resumen, este gráfico nos permite visualizar cómo los géneros han evolucionado con el tiempo, mostrando que el género de Acción ha sido consistentemente el más dominante, pero que otros géneros han ganado o perdido relevancia en diferentes épocas, reflejando así los cambios en las preferencias de los jugadores y en el mercado.
+9. Gráfico de juegos lanzados por década vs número de juegos 
+Se utiliza el gráfico de barras, en donde se agrupó por década para contar el número de juegos lanzados en cada una. Se utilizó el método .groupby('Decade').size(), que cuenta la cantidad de registros por cada grupo. Luego, con la función .bar() de Matplotlib, se creó un gráfico de barras para visualizar estos resultados.
+El gráfico muestra un crecimiento exponencial en la cantidad de juegos lanzados. En la década de 1980 se lanzaron 205 juegos, cifra que aumentó a 1,769 en la de 1990 y se disparó a 9,479 en la de 2000. Este aumento masivo se debe al auge de las consolas y las nuevas tecnologías de desarrollo que simplificaron la creación de videojuegos. Luego, en la década de 2010, la cifra de lanzamientos fue de 5,144, lo que representa un descenso notable. Sin embargo, la cantidad mostrada para el año 2020 es de solo un juego, lo cual, puede deberse a un error en la base de datos, la causa más probable de este error es que la base de datos no está actualizada con todos los datos de los lanzamientos de 2020
+
+
+10. Ventas promedio por juego por década
+Se usa un gráfico de barras que muestra las ventas promedio por juego por década. A diferencia de otros análisis que suman las ventas, este se enfoca en el promedio. Para lograrlo, se agruparon los datos por 'Decade' y se calculó el promedio de ventas globales usando el método .mean(). Luego, se usó la función .bar() para visualizar los resultados.
+El gráfico nos muestra de manera contundente cómo, a pesar de que el número de juegos lanzados aumentó drásticamente, las ventas promedio por juego han disminuido a lo largo del tiempo.
+Observaciones y Conclusiones del Gráfico
+* Década de 1980: El promedio de ventas por juego era el más alto, con 1.84 millones.
+* Década de 1990: El promedio bajó a 0.72 millones.
+* Década de 2000: El promedio continuó bajando a 0.50 millones, a pesar de ser la década con el mayor número de lanzamientos y ventas totales. Esto demuestra que la industria se estaba masificando, pero cada juego individual tenía una cuota de mercado más pequeña.
+* Década de 2010: El promedio de ventas cayó a 0.49 millones, reflejando la tendencia de las décadas anteriores.
+* Año 2020: El promedio de ventas es de 0.29 millones, la cifra más baja.
+En conclusión, este gráfico revela un hallazgo crucial: el mercado de los videojuegos ha crecido en volumen total, pero la rentabilidad por juego individual ha disminuido significativamente
+
+
+
+
+Modelado de los datos
+Se probaron diferentes enfoques de modelado: regresión lineal, Random Forest Regressor y Random Forest Classifier. La regresión lineal y el Random Forest Regressor se usaron para intentar predecir valores numéricos (ventas exactas). El Random Forest Classifier se aplicó para la predicción categórica (éxito/no éxito).
+
+
+Dado que la variable objetivo se planteó tanto de forma numérica como categórica, se exploraron ambos enfoques. Para la predicción numérica (regresión), se escogieron modelos simples (Regresión Lineal) y más complejos (Random Forest Regressor) con el fin de comparar la capacidad explicativa. Para la clasificación, se empleó Random Forest por su robustez, interpretabilidad y buen desempeño en problemas no lineales y con múltiples variables. Los datos se dividieron en conjuntos de entrenamiento y prueba. Además, se utilizó validación cruzada para estimar la capacidad de generalización de los modelos.
+
+
+Los modelos obtuvieron valores de R² muy bajos (0.0034 y 0.0281), indicando que no son capaces de explicar la variabilidad de los datos. El Random Forest Classifier alcanzó un accuracy de 69.6%, con precision, recall y F1-score cercanos a 0.70 y un ROC-AUC de 0.76, mostrando un rendimiento estable y aceptable para discriminar entre casos exitosos y no exitosos.
+ En el caso de la clasificación binaria (Éxito/No Éxito), el modelo alcanzó una accuracy del 69.6%, con métricas balanceadas: precision (0.6918), recall (0.6987) y F1-score (0.6952). Además, obtuvo un ROC-AUC de 0.76, lo que refleja una capacidad aceptable de discriminación entre las dos clases. La matriz de confusión muestra que el desempeño es consistente tanto en la predicción de casos exitosos como de no exitosos.
+El Random Forest Classifier fue el modelo que mejor funcionó en este análisis, ya que logró un rendimiento estable y significativamente superior al azar en la clasificación de productos exitosos. En contraste, los modelos de regresión no ofrecieron valor predictivo útil. Por lo tanto, la clasificación resulta ser la estrategia más adecuada para este problema.
+Conclusiones: 
+ La popularidad y el éxito comercial del videojuego no está aislado o involuntariamente, sino el resultado de una interacción compleja entre las variables estructurales, del tiempo, culturales y tecnológicas, que pueden modelarse estadísticamente. Los modelos estables se identifican a partir del análisis de investigación de bases de datos de video, lo que permite una alta seguridad, que los factores afectan a los jugadores y críticos y cómo se traducen en indicadores financieros. Primero, la variable de la plataforma aparece como uno de los pronósticos más importantes: consolas como PlayStation 2, Xbox 360 y Wii concentra el mayor número de títulos éxitos, que no solo reflejan su propagación en el mercado, sino también su capacidad para atraer desarrolladores y consumidores en el ciclo de vida. Este fenómeno está estrechamente vinculado al período de lanzamiento, ya que el análisis de tiempo muestra un aumento exponencial de ventas de 2000 a 2007 con Superior 2007, seguido de una caída a largo plazo. Este modelo se explica por factores como la madurez tecnológica de la consola, la convergencia, los géneros populares (acción, los deportes, los deportes) y los patrones de distribución física, como la visibilidad deseada y el personal editorial) y el aumento de los patrones de distribución física. La reducción promedio de ventas se reduce mediante la fragmentación del mercado, la transición a plataformas digitales y móviles y cambios en los hábitos de consumo, donde la economía de atención y la saturación de palabras reducen el impacto de la unidad en cada lanzamiento. En cuanto al género, los datos revelan que los videojuegos operativos, los deportes y los juegos de tiro han mostrado históricamente una mayor rentabilidad comercial, especialmente al comenzar una consola de alta preparación y períodos de expansión tecnológica. Estos géneros tienden a ofrecer una experiencia intensa, competitiva y múltiple de los jugadores, el creciente compromiso y los virus, los factores clave en las redes sociales y la economía de transmisión. Por el contrario, los géneros tienen una estrategia, simulación o aventura, aunque en expresión absoluta hay menos costo efectivo y más lealtad crítica y un servicio largo que sugiere que la popularidad no siempre se traduce directamente al éxito comercial, sino que depende del segmento de mercado y el modelo comercial aceptado. En este sentido, el formato de distribución juega un papel crucial: las palabras distribuidas en formato físico en 2000 son más precios y control de canales, mientras que los juegos digitales y móviles, aunque más accesibles, enfrentan una competencia masiva e ingresos inestables. Esta diferencia estructural explica por qué los datos del complejo analizado se centraron en la venta física al transferir una plataforma como Steam, App Store o Google Play, donde géneros como rompecabezas, simulación o narrativa han encontrado nuevos nichos exitosos.
+Desde un punto de vista estadístico, el vínculo entre las ventas globales y las ventas regionales (especialmente en América del Norte y Europa) es alto, indicando que el éxito comercial está estrictamente determinado por el rendimiento en los mercados occidentales. Aunque el Japón históricamente significativo muestra un contexto más bajo que indica diferencias culturales en las capacidades de género, estética y mecánica. Esta regionalización significa que la popularidad de los videojuegos debe entenderse como un fenómeno contextual en el que la estrategia de diseño, narrativa y marketing debe adaptarse a la sensibilidad local. Además, análisis de regresión y clasificación basado en variables antes del lanzamiento (plataforma, género, editor, año), es posible anticipar el éxito comercial de la palabra con precisión razonable antes del producto al mercado que abre oportunidades para modelos de evaluación estratégica y carteras editoriales.
+La popularidad de los videojuegos entre jugadores y críticos y su éxito comercial es el resultado de las sinergias entre el género elegido, la plataforma de lanzamiento, el momento histórico del mercado, el modelo de distribución y la segmentación regional. Estos factores no parecen aislados, pero están asociados con modelos que pueden modelarse y esperar un análisis estadístico multivariante. Por lo tanto, cualquier desarrollo, publicación o estrategia de inversión en la industria de los videojuegos debe comenzar con una comprensión profunda de esta dinámica e integrar datos históricos, tendencias culturales y pronósticos tecnológicos para aumentar el impacto y la sostenibilidad del producto en un entorno cada vez más competitivo y de fragmentación.
+Resultados y Discusión
+El análisis exploratorio reveló que el mercado de los videojuegos no es uniforme, sino que está impulsado por una combinación de factores históricos, tecnológicos y de mercado. El modelo Random Forest Classifier fue el que mejor funcionó para predecir si un videojuego sería un éxito comercial o no, logrando una precisión de 69.6%. En contraste, los modelos de regresión, que intentaban predecir las ventas exactas, no fueron útiles. Esto sugiere que la popularidad de los videojuegos no es algo al azar, sino que está influenciada por variables que se pueden analizar antes del lanzamiento, como la plataforma, el género y el año de lanzamiento.
+Los hallazgos clave se interpretan de la siguiente manera:
+* Dominio de plataformas y géneros: Consolas como la PlayStation 2, Xbox 360 y Wii concentran la mayor cantidad de títulos exitosos. 
+* Los géneros de Acción, Deportes y Shooter han sido consistentemente los más rentables comercialmente, lo que refleja la preferencia de los jugadores por experiencias competitivas e intensas.
+* Evolución del mercado: Las ventas de videojuegos aumentaron exponencialmente desde 2000 hasta un pico en 2007. Esto se debe al auge de la séptima generación de consolas. Después de 2007, las ventas totales disminuyeron , influenciadas por la llegada de los juegos móviles y free-to-play, así como por un aumento en la piratería.
+* Ventas por región y ventas promedio: El éxito comercial está estrechamente ligado a los mercados de Norteamérica y Europa, que en conjunto representan la mayoría de las ventas globales. A pesar de que el mercado ha crecido en general, las
+ventas promedio por juego han disminuido drásticamente. Esto se debe a la saturación del mercado, la alta competencia y el cambio hacia modelos de negocio digitales.
+Recomendaciones y limitaciones 
+Limitaciones del análisis:
+   * Datos desactualizados: La base de datos no está actualizada y tiene un error evidente en 2020, lo que limita la capacidad para analizar las tendencias más recientes del mercado, como el auge de los videojuegos móviles y de PC.
+   * Sesgo en la muestra: Es posible que la base de datos no capture todas las ventas digitales y de juegos free-to-play, lo que genera un sesgo que podría subestimar la rentabilidad de géneros populares en plataformas móviles.
+Recomendaciones para futuros análisis:
+   * Integrar variables de ingresos de juegos móviles y free-to-play para obtener una imagen más completa de la economía del videojuego.
+   * Analizar la relación entre las calificaciones de la crítica y de los usuarios con el éxito comercial para ver si la percepción de calidad se correlaciona con las ventas.
+   * Investigar el impacto de la piratería con datos más precisos, lo que podría ofrecer una perspectiva más clara de por qué cayeron las ventas después de 2007.
+
+
+
+
+¿Qué aporta a nuestra carrera como futuros ingenieros de sistemas?
+A través de este proyecto, se pudo hacer uso de Python y bibliotecas como pandas y numpy para la limpieza y estructuración de datos, una habilidad fundamental en cualquier rol técnico como profesionales, ya que la programación y la analítica de datos son fundamentales para todo ingeniero de sistemas. Utilizamos matplotlib y seaborn para visualizar tendencias y entender el mercado de videojuegos, lo cual nos demostró cómo el análisis de datos puede informar la toma de decisiones. Además, la experiencia con modelos de Machine Learning como Random Forest nos preparó para desarrollar sistemas predictivos, una capacidad crucial para la predicción de futuros escenarios en el área de analítica de datos. En resumen, este proyecto nos brindó una base sólida en análisis de datos, lo que es esencial para nuestro futuro profesional. 
+Referencia: 
+Belli, S., & López Raventós, C. (2008). Breve historia de los videojuegos. Atenas Digital. Revista de Pensamiento e Investigación Social , (14), 159-179.
+___________________________________________________________________________
+Guion de video: 
+JULIANA Introducción: 
+¡Hola a todos! ¿Alguna vez se han preguntado qué hace que un videojuego sea un éxito comercial? En los últimos 50 años, los videojuegos han evolucionado de consolas complejas a mundos virtuales en nuestros teléfonos. Hoy, vamos a analizar las razones detrás del éxito comercial en la industria de los videojuegos.
+JULIANA Presentación del proyecto (imágenes de la base de datos)
+Utilizamos la base de datos 'Video Game Sales' de Kaggle con 16,291 videojuegos. Datos que incluyen plataforma, género, publisher, año y ventas globales. Usamos Python para limpiar y analizar, enfocándonos solo en información pre-lanzamiento. ¿Cuál es nuestro objetivo?: predecir éxito comercial para decisiones de inversión usando características conocidas antes del lanzamiento.
+Resultados: (imágenes de los principales gráficos obtenidos)
+   * KEVIN Histograma de Ventas Globales: Vimos que la mayoría de los juegos venden poco, pero unos pocos juegos famosos venden muchísimo, además de la tendencia a disminuir sus ventas en los últimos años, esto podría explicarse por la piratería y la popularidad de juegos gratuitos o de bajo costo hoy en día, a diferencia de las ventas físicas de antes.
+   * KEVIN La PlayStation 2 lidera, seguida por Xbox 360 y PS3. ¡Las consolas clásicas siguen siendo las más populares! PC y otras plataformas más nuevas tienen menos ventas totales en esta base de datos, lo cual podría significar que estos medios casi no tienen juegos de costo monetario. 
+   * Gráfico de Barras KEVIN - Géneros: El género Acción es el género que mayor cantidad de favoritismo tiene en la población, seguido de cerca por Deportes y Shooter. Los juegos de acción y competición venden más. 
+   * EDWIN: Gráfico de Línea - Ventas Anuales: como podemos ver las ventas crecieron exponencialmente hasta un pico en 2007, impulsadas por consolas como la Wii, Xbox 360 y PS3. Pero después, ¡bajaron drásticamente! Esto se debe a la competencia de los juegos móviles gratuitos y al auge de la piratería.
+   * EDWIN: Gráfico - Juegos por Década: aqui vemos que se lanzan muchísimos más juegos hoy que antes, pero la mayoría de estos juegos no involucran ganancias. 
+   * EDWIN Gráfico de Barras - Ventas Promedio por Juego: las ventas promedio por juego han caído mucho. ¡Vender un juego hoy es más difícil que en los años 80s!
+   * EDWIN Gráfico Circular - Ventas por Región:los continentes más grandes son  Norteamérica y Europa …, por mucho, dominando las ventas globales. Japón, aunque es importante, tiene una porción menor de ventas en esta BD.
+   3. lo que aprendí fue: análisis de logs, optimización BD, arquitectura software, testing QA - detectar anomalías y validar valor técnico.
+Modelado: 
+   * Desarrollamos un modelo de Machine Learning.
+   * El modelo pasó por 5 ciclos de mejora, donde identificamos problemas, ajustamos hiperparámetros y validamos métricas.
+   * Resultado: “Al final, alcanzamos una precisión del 68.9%, lo cual es significativo considerando que solo usamos información previa al lanzamiento.”
+   * Resume el flujo en 4 pasos: análisis inicial → problemas → diagnóstico → soluciones.
+   * Menciona brevemente las herramientas (Python, Scikit-learn, Pandas, Random Forest).
+Por ejemplo, si un juego pertenece a cierto género y sale en una consola específica, el modelo ya detecta patrones de éxito basados en títulos previos
+
+
+      * conclusión: Predecir videojuegos exitosos es inherentemente difícil porque depende de factores creativos y de timing no disponibles pre-lanzamiento. Sin embargo, 68.9% de precisión representa una ventaja significativa sobre decisiones puramente intuitivas, especialmente cuando se combina con expertise de la industria.
+
+
+qué aprendí?:
+      * Manejo de bibliotecas estándar (scikit-learn, pandas)
+      * Entendimiento de cuándo usar qué tipo de modelo
+      * Preprocesamiento robusto de datos
+Conclusiones: (Imágenes representativas de los videojuegos más famosos)
+En resumen, el éxito comercial de un videojuego es complejo. No depende solo del año, sino de la plataforma, el género, el mercado regional, y hasta de cómo los jugadores acceden a los juegos hoy en día.
+Hemos visto que mientras las ventas totales crecieron, las ventas promedio por juego disminuyeron, y que un modelo de Machine Learning como el Random Forest Classifier puede predecir el éxito con una precisión adecuada..
+Estos hallazgos nos dan una visión clara de la industria y nos ayudan a entender qué hace que un videojuego tenga mayor éxito comercial y sea el favorito de los jugadores a nivel mundial.  
+¿Qué nos aporta para nuestra carrera como futuros Ingenieros de Sistemas? 
+A través de este proyecto, se pudo hacer uso de Python y bibliotecas como pandas y numpy para la limpieza y estructuración de datos, una habilidad fundamental en cualquier rol técnico como profesionales, ya que la programación y la analítica de datos son fundamentales para todo ingeniero de sistemas por la amplitud de herramientas que se pueden usar y generar en el campo informático. Utilizamos matplotlib y seaborn para visualizar tendencias y entender el mercado de videojuegos, lo cual nos demostró cómo el análisis de datos puede informar sobre la toma de decisiones y el entendimiento del mismo comportamiento humano. Además, la experiencia con modelos de Machine Learning como Random Forest nos preparó para desarrollar modelos predictivos, una capacidad crucial para la predicción de futuros escenarios en el área de analítica de datos. En resumen, este proyecto nos brindó una base sólida en análisis de datos, lo que es esencial para nuestro futuro profesional.
