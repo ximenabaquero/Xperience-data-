@@ -261,7 +261,7 @@ kaggle.api.dataset_download_files(
 ### Contexto
 - Industria ha cambiado significativamente post-2016
 - Nuevas plataformas y modelos de negocio
-- Impacto de streaming y servicios de suscripción
+- Impacto de streaming y servicios de suscripción.
 
 ## 📚 Referencias
 
