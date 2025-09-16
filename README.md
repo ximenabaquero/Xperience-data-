@@ -285,4 +285,4 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 **Última actualización:** Diciembre 2024
 
-**Versión:** 1.0.0
+**Versión:** 1.0.0.
